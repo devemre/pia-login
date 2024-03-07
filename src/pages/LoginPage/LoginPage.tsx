@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, Input } from "../../components";
+import "./LoginPage.css";
 
 const LoginPage = () => {
   const [username, setUsername] = React.useState("");
@@ -19,10 +20,10 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-slate-700">
-      <div className="flex flex-col items-center gap-2 bg-red-100 p-20 rounded-lg bg-opacity-40">
-        <p className="text-3xl">Login</p>
-        <form onSubmit={handleSubmit}>
+    <div className="flex justify-center items-center min-h-screen animated-gradient">
+      <div className="flex flex-col items-center gap-4 bg-slate-800 p-20 rounded-lg bg-opacity-50 shadow-md">
+        <p className="text-3xl text-white">Login</p>
+        <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
           <Input
             name="username"
             type="text"

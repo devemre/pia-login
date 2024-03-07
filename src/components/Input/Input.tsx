@@ -11,9 +11,9 @@ type InputProps = {
 const Input = (props: InputProps) => {
   return (
     <div>
-      <p className="text-sm">{props.label}</p>
+      <p className="text-sm text-white">{props.label}</p>
       <input
-        className="border-2 rounded-md outline-none border-black hover:border-blue-500 active:border-blue-300 focus:border-blue-700 transition-colors duration-200"
+        className="border-2 border-blue-900 rounded-md outline-none px-2 hover:border-blue-500 active:border-blue-300 focus:border-blue-700 transition-colors duration-200"
         name={props.name}
         type={props.type}
         value={props.value}
