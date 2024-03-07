@@ -5,7 +5,7 @@ type InputProps = {
   type: string;
   label: string;
   value: string;
-  onChange: (event: any) => void;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 const Input = (props: InputProps) => {

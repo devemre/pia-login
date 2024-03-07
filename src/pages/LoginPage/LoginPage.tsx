@@ -6,15 +6,15 @@ const LoginPage = () => {
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
 
-  const handleUsernameChange = (event: any) => {
+  const handleUsernameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setUsername(event.target.value);
   };
 
-  const handlePasswordChange = (event: any) => {
+  const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(event.target.value);
   };
 
-  const handleSubmit = (event: any) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log(`Username: ${username}, Password: ${password}`);
   };
