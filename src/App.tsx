@@ -1,10 +1,14 @@
-import { LoginPage } from "./pages";
+import { BrowserRouter } from "react-router-dom";
+import AppLayout from "./AppLayout";
+import { AuthProvider } from "./store/AuthProvider";
 
 const App = () => {
   return (
-    <div>
-      <LoginPage />
-    </div>
+    <BrowserRouter>
+      <AuthProvider>
+        <AppLayout />
+      </AuthProvider>
+    </BrowserRouter>
   );
 };
 

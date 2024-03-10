@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Input } from "../../components";
 import "./LoginPage.css";
+import { useAuth } from "../../store/AuthProvider";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
-  const [username, setUsername] = React.useState("");
-  const [password, setPassword] = React.useState("");
+  const auth = useAuth();
+
+  const [username, setUsername] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
 
   const handleUsernameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setUsername(event.target.value);
@@ -14,9 +18,13 @@ const LoginPage = () => {
     setPassword(event.target.value);
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    console.log(`Username: ${username}, Password: ${password}`);
+    try {
+      await auth.login(username, password);
+    } catch (error) {
+      console.error("Login failed:", error);
+    }
   };
 
   return (
