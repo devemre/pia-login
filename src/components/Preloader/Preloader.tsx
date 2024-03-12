@@ -1,12 +1,20 @@
+import { useSelector } from "react-redux";
+
 const Preloader = () => {
+  const isLoading = useSelector((state: any) => state.preloader.isLoading);
+
+  if (!isLoading) {
+    return <></>;
+  }
+
   return (
-    <div className="absolute w-full h-full opacity-50 bg-white flex justify-center items-center">
+    <div className="absolute left-0 top-0 w-full h-full opacity-50 bg-white flex justify-center items-center">
       <div className="w-[10%] h-[10%]">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
           <circle
             fill="#FF156D"
             stroke="#FF156D"
-            stroke-width="2"
+            strokeWidth="2"
             r="15"
             cx="40"
             cy="65"
@@ -24,7 +32,7 @@ const Preloader = () => {
           <circle
             fill="#FF156D"
             stroke="#FF156D"
-            stroke-width="2"
+            strokeWidth="2"
             r="15"
             cx="100"
             cy="65"
@@ -42,7 +50,7 @@ const Preloader = () => {
           <circle
             fill="#FF156D"
             stroke="#FF156D"
-            stroke-width="2"
+            strokeWidth="2"
             r="15"
             cx="160"
             cy="65"

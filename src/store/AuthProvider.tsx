@@ -7,7 +7,6 @@ import {
   removeAuthorizationHeader,
   setAuthorizationHeader,
 } from "../config/axiosConfig";
-import { usePreloader } from "./PreloaderProvider";
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
@@ -15,7 +14,6 @@ export const AuthProvider: React.FC<{ children?: React.ReactNode }> = ({
   children,
 }) => {
   const navigate = useNavigate();
-  const preloader = usePreloader();
 
   const [user, setUser] = useState<User | null>(() => {
     const storedUser = localStorage.getItem("pia_dashboard_user");
@@ -23,7 +21,6 @@ export const AuthProvider: React.FC<{ children?: React.ReactNode }> = ({
   });
 
   const login = async (username: string, password: string) => {
-    preloader.setShowPreloader(true);
     try {
       const userData = await loginUser(username, password);
       setUser(userData);
@@ -33,7 +30,6 @@ export const AuthProvider: React.FC<{ children?: React.ReactNode }> = ({
     } catch (error) {
       console.error("Login failed:", error);
     }
-    preloader.setShowPreloader(false);
   };
 
   const logout = () => {

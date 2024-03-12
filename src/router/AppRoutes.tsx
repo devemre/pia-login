@@ -4,20 +4,21 @@ import { useAuth } from "../store/AuthProvider";
 import { useEffect } from "react";
 
 const AppRoutes = () => {
-  const auth = useAuth();
+  const { user } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (auth.user) {
+    if (user) {
       navigate("/dashboard");
     } else {
       navigate("/");
     }
-  }, [auth.user]);
+  }, [user]);
+
   return (
     <Routes>
-      {!auth.user && <Route path="/" element={<LoginPage />} />}
-      {auth.user && <Route path="/dashboard" element={<DashboardPage />} />}
+      {!user && <Route path="/" element={<LoginPage />} />}
+      {user && <Route path="/dashboard" element={<DashboardPage />} />}
     </Routes>
   );
 };
