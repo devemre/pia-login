@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import preloaderSlice from "../slice/preloaderSlice";
+import preloaderSlice from "./slices/preloaderSlice";
 
 const store = configureStore({
   reducer: {

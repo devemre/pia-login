@@ -1,6 +1,6 @@
 import axios from "axios";
 import store from "../store/store";
-import { hidePreloader, showPreloader } from "../slice/preloaderSlice";
+import { setRequestCount } from "../store/slices/preloaderSlice";
 
 const axiosInstance = axios.create({
   baseURL: "https://dummyjson.com",
@@ -12,12 +12,12 @@ const axiosInstance = axios.create({
 
 axiosInstance.interceptors.request.use(
   (config) => {
-    store.dispatch(showPreloader());
+    store.dispatch(setRequestCount(1));
     console.log("Request intercepted:", config);
     return config;
   },
   (error) => {
-    store.dispatch(hidePreloader());
+    store.dispatch(setRequestCount(-1));
     console.error("Request error:", error);
     return Promise.reject(error);
   }
@@ -25,12 +25,12 @@ axiosInstance.interceptors.request.use(
 
 axiosInstance.interceptors.response.use(
   (response) => {
-    store.dispatch(hidePreloader());
+    store.dispatch(setRequestCount(-1));
     console.log("Response intercepted:", response);
     return response;
   },
   (error) => {
-    store.dispatch(hidePreloader());
+    store.dispatch(setRequestCount(-1));
     console.error("Response error:", error);
     return Promise.reject(error);
   }

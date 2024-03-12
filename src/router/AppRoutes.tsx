@@ -1,6 +1,6 @@
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { DashboardPage, LoginPage } from "../pages";
-import { useAuth } from "../store/AuthProvider";
+import { useAuth } from "../context/AuthProvider";
 import { useEffect } from "react";
 
 const AppRoutes = () => {

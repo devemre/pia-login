@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Input } from "../../components";
 import "./LoginPage.css";
-import { useAuth } from "../../store/AuthProvider";
+import { useAuth } from "../../context/AuthProvider";
 import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
