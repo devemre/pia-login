@@ -9,6 +9,15 @@ export async function getProducts() {
   }
 }
 
+export async function getProductsByCategory(id: string) {
+  try {
+    const response = await axiosInstance.get("/products/category/" + id);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+}
+
 export async function getCategories() {
   try {
     const response = await axiosInstance.get("/products/categories");
